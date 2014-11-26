@@ -12,7 +12,6 @@ It alse reduces the number of UITableViewCells needed to be created. Often a pag
     
     // Each cell is represented by a DLCellItem.
     // Each section of the table view is represented by a DLSectionItem, containing the cell items of the section.
-    
     DLCellItem *cell = [DLCellItem new];
     cell.reuseIdentifier = @"UITableViewCell";
     cell.height = 44;
