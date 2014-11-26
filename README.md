@@ -1,4 +1,4 @@
-With DLTableView view rendering with UITableView can be written in a declartive fashion. It also solves the following problems associated with table views.
+With DLTableView table view code can be written in a declarative fashion. It also solves the following problems associated with table views.
 - Conditionally hiding of cells and sections.
 - The mental burden of keeping data source indesPaths in synch with the delegate.
 
