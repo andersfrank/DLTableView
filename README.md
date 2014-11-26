@@ -19,6 +19,7 @@ It alse reduces the number of UITableViewCells needed to be created. Often a pag
     cell.willDisplayBlock = ^(DLCellItem *cellItem, UITableViewCell *cell) {
          cell.textLabel.text = @"Title";
     };
+    
     // Setting the sections of the table view will also reload the table view.
     self.tableView.sections = @[[DLSectionItem itemWithCells:@[cell]]];
 ```
