@@ -1,7 +1,8 @@
-DLTableView makes working with table views easier and less messy. 
+With DLTableView view rendering with UITableView can be written in a declartive fashion. It also solves the following problems associated with table views.
+- Conditionally hiding of cells and sections.
+- The mental burden of keeping data source indesPaths in synch with the delegate.
 
-- It solves the complex problem of conditionally hide cells and sections.
-- It reduces the number of UITableViewCells needed to be created. Often a page can be rendered with a few base cell classes.
+It alse reduces the number of UITableViewCells needed to be created. Often a page can be rendered with a few base cell classes.
 
 
 ## Example of usage
