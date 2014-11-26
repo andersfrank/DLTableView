@@ -1,4 +1,4 @@
-TBLView makes working with table views easier and less messy. 
+DLTableView makes working with table views easier and less messy. 
 
 - It solves the complex problem of conditionally hide cells and sections.
 - It reduces the number of UITableViewCells needed to be created. Often a page can be rendered with a few base cell classes.
@@ -9,16 +9,16 @@ TBLView makes working with table views easier and less messy.
 ```objective-c
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     
-    TBLCellItem *cell = [TBLCellItem new];
+    DLCellItem *cell = [DLCellItem new];
     cell.height = 44;
     [cell setTarget:self action:@selector(cellTapped:)];
-    cell.willDisplayBlock = ^(TBLCellItem *cellItem, UITableViewCell *cell) {
+    cell.willDisplayBlock = ^(DLCellItem *cellItem, UITableViewCell *cell) {
          cell.textLabel.text = @"Title";
     };
     
-    self.tableView.sections = @[[TBLSectionItem itemWithCells:@[cell]]];
+    self.tableView.sections = @[[DLSectionItem itemWithCells:@[cell]]];
 ```
 
 ## License
 
-TBLView is available under the MIT license. See the LICENSE file for more info.
+DLTableView is available under the MIT license. See the LICENSE file for more info.
