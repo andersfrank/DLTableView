@@ -10,6 +10,9 @@ It alse reduces the number of UITableViewCells needed to be created. Often a pag
 ```objective-c
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     
+    // Each cell is represented by a DLCellItem.
+    // Each section of the table view is represented by a DLSectionItem, containing the cell items of the section.
+    
     DLCellItem *cell = [DLCellItem new];
     cell.reuseIdentifier = @"UITableViewCell";
     cell.height = 44;
@@ -17,7 +20,7 @@ It alse reduces the number of UITableViewCells needed to be created. Often a pag
     cell.willDisplayBlock = ^(DLCellItem *cellItem, UITableViewCell *cell) {
          cell.textLabel.text = @"Title";
     };
-    
+    // Setting the sections of the table view will also reload the table view.
     self.tableView.sections = @[[DLSectionItem itemWithCells:@[cell]]];
 ```
 
