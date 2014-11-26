@@ -11,6 +11,7 @@ It alse reduces the number of UITableViewCells needed to be created. Often a pag
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     
     DLCellItem *cell = [DLCellItem new];
+    cell.reuseIdentifier = @"UITableViewCell";
     cell.height = 44;
     [cell setTarget:self action:@selector(cellTapped:)];
     cell.willDisplayBlock = ^(DLCellItem *cellItem, UITableViewCell *cell) {
