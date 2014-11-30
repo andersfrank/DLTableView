@@ -7,7 +7,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     DLSectionItem *sectionItem = self.sections[section];
-    if (sectionItem.optOut) {
+    if (sectionItem.forwardDelegateAndDataSource) {
         return [self.externalDataSource tableView:tableView numberOfRowsInSection:section];
     }
     else {
@@ -17,7 +17,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DLSectionItem *sectionItem = [self sectionAtIndexPath:indexPath];
-    if (sectionItem.optOut) {
+    if (sectionItem.forwardDelegateAndDataSource) {
             return [self.externalDataSource tableView:tableView cellForRowAtIndexPath:indexPath];
     }
     else {
@@ -42,7 +42,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     DLSectionItem *sectionItem = self.sections[section];
-    if (sectionItem.optOut) {
+    if (sectionItem.forwardDelegateAndDataSource) {
         if ([self.externalDataSource respondsToSelector:@selector(tableView:titleForHeaderInSection:)]) {
             return [self.externalDataSource tableView:tableView titleForHeaderInSection:section];
         }
@@ -57,7 +57,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     DLSectionItem *sectionItem = self.sections[section];
-    if (sectionItem.optOut) {
+    if (sectionItem.forwardDelegateAndDataSource) {
         if ([self.externalDataSource respondsToSelector:@selector(tableView:titleForFooterInSection:)]) {
             return [self.externalDataSource tableView:tableView titleForFooterInSection:section];
         }
@@ -67,7 +67,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     DLSectionItem *sectionItem = [self sectionAtIndexPath:indexPath];
-    if (sectionItem.optOut) {
+    if (sectionItem.forwardDelegateAndDataSource) {
         if ([self.externalDataSource respondsToSelector:@selector(tableView:canEditRowAtIndexPath:)]) {
             return [self.externalDataSource tableView:tableView canEditRowAtIndexPath:indexPath];
         }
@@ -78,7 +78,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     DLSectionItem *sectionItem = [self sectionAtIndexPath:indexPath];
-    if (sectionItem.optOut) {
+    if (sectionItem.forwardDelegateAndDataSource) {
         if ([self.externalDataSource respondsToSelector:@selector(tableView:canMoveRowAtIndexPath:)]) {
             return [self.externalDataSource tableView:tableView canMoveRowAtIndexPath:indexPath];
         }
@@ -98,7 +98,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     DLSectionItem *sectionItem = [self sectionAtIndexPath:indexPath];
-    if (sectionItem.optOut) {
+    if (sectionItem.forwardDelegateAndDataSource) {
         if ([self.externalDataSource respondsToSelector:@selector(tableView:commitEditingStyle:forRowAtIndexPath:)]) {
             return [self.externalDataSource tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
         }
@@ -108,7 +108,7 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     DLSectionItem *sourceSectionItem = [self sectionAtIndexPath:sourceIndexPath];
     DLSectionItem *destinationSectionItem = [self sectionAtIndexPath:destinationIndexPath];
-    if (sourceSectionItem.optOut && destinationSectionItem.optOut) {
+    if (sourceSectionItem.forwardDelegateAndDataSource && destinationSectionItem.forwardDelegateAndDataSource) {
         if ([self.externalDataSource respondsToSelector:@selector(tableView:moveRowAtIndexPath:toIndexPath:)]) {
             [self.externalDataSource tableView:tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:destinationIndexPath];
         }

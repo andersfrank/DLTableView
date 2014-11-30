@@ -10,9 +10,10 @@
 /**
  *  The section will opt out of handling table view delegate and datasource.
  *  Instead the delegate and data source methods will be called in the standard fashion.
- *  NO by default.
+ *  NO by default. Note that `numberOfSectionsInTableView:` always will be intercepted by the
+ *  DLTableView.
  */
-@property (nonatomic, assign) BOOL optOut;
+@property (nonatomic, assign) BOOL forwardDelegateAndDataSource;
 
 /**
  *  The cell items of the section
