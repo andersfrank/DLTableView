@@ -73,7 +73,8 @@
         }
     }
     else {
-        return [sectionItem.cellItems[indexPath.row] height];
+        DLCellItem *cellItem = sectionItem.cellItems[indexPath.row];
+        return cellItem.height;
     }
     
     return 44;
