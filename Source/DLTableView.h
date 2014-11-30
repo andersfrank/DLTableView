@@ -1,8 +1,19 @@
-//
-//
-//  Created by Anders Frank on 2013-02-14.
-//  Copyright (c) 2013 Monterosa AB. All rights reserved.
-//
+
+/*
+ 
+ By default the DLTableView will handle most of the table views delegates and datasource protocol methods.
+ It is possible to fall back to standard table view handling for a section by setting the flag optOut to `YES`.
+ 
+ In the mode where the DLTableView handles delegate and data source methods, only the UIScrollViewDelegate methods will be forwarded to the delegate.
+ 
+ In future releases the following delegate methods might be handled by the DLTableView also:
+ - tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:
+ - indentationLevelForRowAtIndexPath:
+ - tableView:willDisplayHeaderView:forSection:
+ - tableView:willDisplayFooterView:forSection:
+ - tableView:accessoryButtonTappedForRowWithIndexPath:
+ 
+ */
 
 #import <Foundation/Foundation.h>
 #import "DLCellItem.h"
@@ -15,36 +26,15 @@ typedef enum {
     DLCellPositionSingle,
 }DLCellPosition;
 
-@protocol DLTableViewDelegate;
 
 @class DLSectionItem, DLCellItem;
 
-@interface DLTableView : UITableView <UITableViewDataSource, UITableViewDelegate>
+@interface DLTableView : UITableView 
 
 /**
  *   The TBLSection objects of the table view. Setting the sections will reload the table view.
  */
 @property (nonatomic, strong) NSArray *sections;
-
-/**
- *  The delegate of the tableview. The default delegate and dataSource of the UITableView are implemented by TLBView and should not be changed.
- */
-@property (nonatomic, assign) id <DLTableViewDelegate> tblViewDelegate;
-
-/**
- *  The delegate methods:
- *  scrollViewDidScroll:
- *  scrollViewDidEndDragging:willDecelerate 
- *  scrollViewWillBeginDragging: 
- *
- *  of the UIScrollView will be forwarded.
- */
-@property (nonatomic, assign) BOOL forwardScrollViewDelegateMethods;
-
-/**
- *  Forces cells with higher index to placed above lower index cells.
- */
-@property (nonatomic, assign) BOOL higherIndexCellsOnTop;
 
 /**
  *  The section at a certain index path.
@@ -203,17 +193,5 @@ typedef enum {
  *  @param animation     The row animation type
  */
 - (void)reloadCellItems:(NSArray *)cellItems withRowAnimation:(UITableViewRowAnimation)animation;
-
-@end
-
-@protocol DLTableViewDelegate <NSObject>
-
-@optional
-
-- (void)tableView:(DLTableView *)tableView didMoveCellWithInfo:(DLCellItem *)cellInfo fromRow:(NSUInteger)sourceRow toRow:(NSUInteger)destinationRow;
-- (void)tableViewWasScrolledToBottom:(DLTableView *)tableView;
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView;
 
 @end

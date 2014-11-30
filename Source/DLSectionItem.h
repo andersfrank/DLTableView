@@ -1,9 +1,3 @@
-//
-//  SectionInfo.h
-//
-//  Created by Anders Frank on 2012-11-29.
-//  Copyright (c) 2012 Anders Frank. All rights reserved.
-//
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -11,6 +5,14 @@
 @class DLCellItem;
 
 @interface DLSectionItem : NSObject
+
+
+/**
+ *  The section will opt out of handling table view delegate and datasource.
+ *  Instead the delegate and data source methods will be called in the standard fashion.
+ *  NO by default.
+ */
+@property (nonatomic, assign) BOOL optOut;
 
 /**
  *  The cell items of the section

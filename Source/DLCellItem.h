@@ -1,9 +1,3 @@
-//
-//  SKCellInfo.h
-//
-//  Created by Anders Frank on 2012-11-29.
-//  Copyright (c) 2012 Anders Frank. All rights reserved.
-//
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -30,19 +24,9 @@ typedef void(^WillDisplayBlock)(DLCellItem *cellItem, UITableViewCell *cell);
 @property (nonatomic, assign) CGFloat height;
 
 /**
- *  Whether the cell can be edited or not.
- */
-@property (nonatomic, assign) BOOL canEdit;
-
-/**
  *  Called when the cell will be displayed.
  */
 @property (nonatomic, copy) WillDisplayBlock willDisplayBlock;
-
-/**
- * The editing style. Default is ´UITableViewCellEditingStyleDelete´
- */
-@property (nonatomic, assign) UITableViewCellEditingStyle editingStyle;
 
 /**
  *  Whether the cell should be indented while editing or not. By default ´YES´.
@@ -50,9 +34,19 @@ typedef void(^WillDisplayBlock)(DLCellItem *cellItem, UITableViewCell *cell);
 @property (nonatomic, assign) BOOL shouldIndentWhileEditing;
 
 /**
+ *  The title of the delete confirmation button. Must be set in order to display title at all.
+ */
+@property (nonatomic, copy) NSString *deleteConfirmationButtonTitle;
+
+/**
  *  The target of an action called when the cell is tapped.
  */
 @property (nonatomic, assign, readonly) id target;
+
+/**
+ *  The indentation level.
+ */
+@property (nonatomic, assign) NSInteger indentationLevel;
 
 /**
  *  Action called when the cell is tapped.
@@ -61,11 +55,6 @@ typedef void(^WillDisplayBlock)(DLCellItem *cellItem, UITableViewCell *cell);
  *  @param action Action called when cell is tapped
  */
 - (void)setTarget:(id)target action:(SEL)action;
-
-/**
- *  For internal usage.
- */
-- (void)cellWasTapped;
 
 /**
  *  Convenience method for creating a CellItem

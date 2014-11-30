@@ -1,8 +1,3 @@
-//
-//
-//  Created by Anders Frank on 2012-11-29.
-//  Copyright (c) 2012 Anders Frank. All rights reserved.
-//
 
 #import "DLCellItem.h"
 
@@ -20,7 +15,6 @@
 {
     self = [super init];
     if (self) {
-        self.editingStyle = UITableViewCellEditingStyleDelete;
         self.shouldIndentWhileEditing = YES;
     }
     return self;

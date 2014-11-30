@@ -1,24 +1,26 @@
-//
-//
-//  Created by Anders Frank on 2013-02-14.
-//  Copyright (c) 2013 Monterosa AB. All rights reserved.
-//
 
 #import "DLTableView.h"
 #import "DLSectionItem.h"
 #import "DLCellItem.h"
-
-
-@interface DLTableView () 
-@property (nonatomic, assign) id <UITableViewDelegate> externalDelegate;
-@property (nonatomic, assign) id <UITableViewDataSource> externalDataSource;
-@end
+#import "DLCellItem+Private.h"
+#import "DLTableView+Private.h"
+#import "DLTableView+UIScrollViewDelegate.h"
+#import "DLTableView+UITableViewDataSource.h"
+#import "DLTableView+UITableViewDelegate.h"
 
 @implementation DLTableView
 
 - (void)awakeFromNib {
-    self.dataSource = self;
-    self.delegate = self;
+    super.dataSource = self;
+    super.delegate = self;
+}
+
+- (void)setDelegate:(id<UITableViewDelegate>)delegate {
+    _externalDelegate = delegate;
+}
+
+- (void)setDataSource:(id<UITableViewDataSource>)dataSource {
+    _externalDataSource = dataSource;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
@@ -26,8 +28,8 @@
     self = [super initWithFrame:frame style:style];
     if (self) {
         
-        self.dataSource = self;
-        self.delegate = self;
+        super.dataSource = self;
+        super.delegate = self;
 
     }
     return self;
@@ -38,10 +40,6 @@
     _sections = sections;
     
     [self reloadData];
-    
-    if (self.higherIndexCellsOnTop) {
-        [self updateCellZPosition];
-    }
 }
 
 #pragma mark - UITableView
@@ -244,7 +242,6 @@
     return indexPaths.count > 0 ? indexPaths : nil;
 }
 
-
 - (DLCellPosition)cellPosition:(DLCellItem *)cellInfo {
   
     NSIndexPath *ip = [self indexPathForCellItem:cellInfo];
@@ -258,158 +255,6 @@
         return DLCellPositionBottom;
    
     return DLCellPositionMiddle;
-}
-
-#pragma mark - UITableViewDelegate and dataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[self sections] count];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[self section:section] cellItems] count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    DLCellItem *cellInfo = [self cellItem:indexPath];
-    
-    UITableViewCell *cell = [self dequeueReusableCellWithIdentifier:cellInfo.reuseIdentifier];
-    
-    if (!cell) {
-        NSLog(@"Error! Failed loading cell for identifier: %@",cellInfo.reuseIdentifier);
-    }
-    
-    if (!cellInfo.target) {
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [[self cellItem:indexPath] height];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return [[self section:section] headerHeight];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [[self section:section] headerView];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self section:section] headerTitle];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DLCellItem *cell = [self cellItem:indexPath];
-    [cell cellWasTapped];
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [[self sectionAtIndexPath:indexPath] canMove];
-}
-
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [[self cellItem:indexPath] canEdit];
-}
-
--(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [[self cellItem:indexPath] editingStyle];
-}
-
--(BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [[self cellItem:indexPath] shouldIndentWhileEditing];
-}
-
--(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    
-    DLSectionItem *sourceSection = [self sectionAtIndexPath:sourceIndexPath];
-    DLSectionItem *destinationSection = [self sectionAtIndexPath:destinationIndexPath];
-    DLCellItem *movedCellInfo = [self cellItem:sourceIndexPath];
-    [sourceSection removeCellItem:movedCellInfo];
-    [destinationSection insertCellItem:movedCellInfo atRow:destinationIndexPath.row];
-   
-
-    NSIndexPath *newIndexPath = [self indexPathForCellItem:movedCellInfo];
-    if ([self.tblViewDelegate respondsToSelector:@selector(tableView:didMoveCellWithInfo:fromRow:toRow:)])
-        [self.tblViewDelegate tableView:self didMoveCellWithInfo:movedCellInfo fromRow:sourceIndexPath.row toRow:newIndexPath.row];
-    
-}
-
-- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
-    
-    DLSectionItem *sourceSectionInfo = [self sectionAtIndexPath:sourceIndexPath];
-    DLSectionItem *proposedDestinationSectionInfo = [self sectionAtIndexPath:proposedDestinationIndexPath];
-    if (sourceSectionInfo == proposedDestinationSectionInfo) return proposedDestinationIndexPath;
-    else {
-        if (proposedDestinationIndexPath.section < sourceIndexPath.section)
-            return [NSIndexPath indexPathForRow:0 inSection:sourceIndexPath.section];
-        else return [NSIndexPath indexPathForRow:sourceSectionInfo.cellItems.count - 1 inSection:sourceIndexPath.section];
-        
-    }
-        
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    DLCellItem *cellInfo = [self cellItem:indexPath];
-    
-    if (cellInfo.willDisplayBlock)
-        cellInfo.willDisplayBlock (cellInfo, cell);
-
-}
-
-#pragma mark - UIScrollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    if (self.contentOffset.y >= self.contentSize.height - self.frame.size.height)
-    {
-        if ([self.tblViewDelegate respondsToSelector:@selector(tableViewWasScrolledToBottom:)])
-            [self.tblViewDelegate tableViewWasScrolledToBottom:self];
-    }
-    
-    if (self.higherIndexCellsOnTop)
-        [self updateCellZPosition];
-    
-    if (!self.forwardScrollViewDelegateMethods) return;
-    
-    if ([self.tblViewDelegate respondsToSelector:@selector(scrollViewDidScroll:)])
-        [self.tblViewDelegate scrollViewDidScroll:scrollView];
-    
-
-
-}
-
-- (void)updateCellZPosition {
-    NSArray *sortedIndexPaths = [self.indexPathsForVisibleRows sortedArrayUsingComparator: ^NSComparisonResult(NSIndexPath *ip1, NSIndexPath *ip2) {
-        return [ip1 compare:ip2];
-    }];
-    for (NSIndexPath *indexPath in sortedIndexPaths) {
-        UITableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
-        if (cell.superview) {
-            [cell.superview bringSubviewToFront:cell];
-        }
-    }
-
-}
-
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    
-    if (!self.forwardScrollViewDelegateMethods) return;
-    
-    if ([self.tblViewDelegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) 
-        [self.tblViewDelegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
-
-}
-
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    
-    if (!self.forwardScrollViewDelegateMethods) return;
-    
-    if ([self.tblViewDelegate respondsToSelector:@selector(scrollViewWillBeginDragging:)])
-        [self.tblViewDelegate scrollViewWillBeginDragging:scrollView];
-    
 }
 
 @end

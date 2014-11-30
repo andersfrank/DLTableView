@@ -20,6 +20,9 @@
 		05451B4C1A0AA0DA004295AC /* DLTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05451B481A0AA0DA004295AC /* DLTableView.m */; };
 		055A4B811A1293B400577AD4 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 055A4B801A1293B400577AD4 /* README.md */; };
 		055A4B871A12985A00577AD4 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055A4B861A12985A00577AD4 /* AboutTableViewController.m */; };
+		055BCFFA1A2B3208000B0048 /* DLTableView+UITableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 055BCFF91A2B3208000B0048 /* DLTableView+UITableViewDelegate.m */; };
+		055BCFFE1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 055BCFFD1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m */; };
+		055BD0011A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 055BD0001A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,14 @@
 		055A4B801A1293B400577AD4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		055A4B851A12985A00577AD4 /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewController.h; sourceTree = "<group>"; };
 		055A4B861A12985A00577AD4 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
+		055BCFF51A2AFF92000B0048 /* DLCellItem+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLCellItem+Private.h"; sourceTree = "<group>"; };
+		055BCFF81A2B3208000B0048 /* DLTableView+UITableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLTableView+UITableViewDelegate.h"; sourceTree = "<group>"; };
+		055BCFF91A2B3208000B0048 /* DLTableView+UITableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLTableView+UITableViewDelegate.m"; sourceTree = "<group>"; };
+		055BCFFB1A2B3409000B0048 /* DLTableView+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLTableView+Private.h"; sourceTree = "<group>"; };
+		055BCFFC1A2B4051000B0048 /* DLTableView+UITableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLTableView+UITableViewDataSource.h"; sourceTree = "<group>"; };
+		055BCFFD1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLTableView+UITableViewDataSource.m"; sourceTree = "<group>"; };
+		055BCFFF1A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLTableView+UIScrollViewDelegate.h"; sourceTree = "<group>"; };
+		055BD0001A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLTableView+UIScrollViewDelegate.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,10 +160,18 @@
 				05451B421A0AA0DA004295AC /* LabelCell.m */,
 				05451B431A0AA0DA004295AC /* DLCellItem.h */,
 				05451B441A0AA0DA004295AC /* DLCellItem.m */,
+				055BCFF51A2AFF92000B0048 /* DLCellItem+Private.h */,
 				05451B451A0AA0DA004295AC /* DLSectionItem.h */,
 				05451B461A0AA0DA004295AC /* DLSectionItem.m */,
 				05451B471A0AA0DA004295AC /* DLTableView.h */,
 				05451B481A0AA0DA004295AC /* DLTableView.m */,
+				055BCFFB1A2B3409000B0048 /* DLTableView+Private.h */,
+				055BCFF81A2B3208000B0048 /* DLTableView+UITableViewDelegate.h */,
+				055BCFF91A2B3208000B0048 /* DLTableView+UITableViewDelegate.m */,
+				055BCFFC1A2B4051000B0048 /* DLTableView+UITableViewDataSource.h */,
+				055BCFFD1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m */,
+				055BCFFF1A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.h */,
+				055BD0001A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m */,
 			);
 			name = Source;
 			path = ../Source;
@@ -282,10 +301,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				05451B231A0AA090004295AC /* StartTableViewController.m in Sources */,
+				055BD0011A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m in Sources */,
 				055A4B871A12985A00577AD4 /* AboutTableViewController.m in Sources */,
 				05451B4B1A0AA0DA004295AC /* DLSectionItem.m in Sources */,
 				05451B201A0AA090004295AC /* AppDelegate.m in Sources */,
+				055BCFFE1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m in Sources */,
 				05451B4A1A0AA0DA004295AC /* DLCellItem.m in Sources */,
+				055BCFFA1A2B3208000B0048 /* DLTableView+UITableViewDelegate.m in Sources */,
 				05451B491A0AA0DA004295AC /* LabelCell.m in Sources */,
 				05451B1D1A0AA090004295AC /* main.m in Sources */,
 				055A4B811A1293B400577AD4 /* README.md in Sources */,
