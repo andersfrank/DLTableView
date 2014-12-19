@@ -70,7 +70,7 @@ NSString * const kThinLineCellResuseIdentifier = @"kThinLineCellResuseIdentifier
         
     }];
     
-    // Setting the sections will also reload the tableview
+    // Setting the sections will reload the tableview
     self.tableView.sections = @[[DLSectionItem itemWithCells:cells]];
     
 }
