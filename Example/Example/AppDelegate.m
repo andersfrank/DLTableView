@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "StartTableViewController.h"
-#import "TestController.h"
+#import "ToDoViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -18,13 +18,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[StartTableViewController new]],
-
+    ToDoViewController *toDoViewController = [[ToDoViewController alloc] initWitViewModel:[ToDoViewModel new]];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:toDoViewController],
     [self.window makeKeyAndVisible];
     
+    [self applyAppearances];
+    
     return YES;
+}
+
+- (void)applyAppearances {
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.396 green:0.529 blue:0.714 alpha:1]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    [[UINavigationBar appearance] setTranslucent:NO];
+
 }
 
 @end
