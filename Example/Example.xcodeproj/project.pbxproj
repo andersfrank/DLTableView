@@ -22,6 +22,8 @@
 		055BD0011A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 055BD0001A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m */; };
 		05B0E4721A448A6C00DE063A /* DrawViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4711A448A6C00DE063A /* DrawViewCell.m */; };
 		05B0E4751A448A9D00DE063A /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4741A448A9D00DE063A /* DrawView.m */; };
+		05B0E4781A4494AF00DE063A /* CheckBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4771A4494AF00DE063A /* CheckBoxView.m */; };
+		05B0E47B1A449E7600DE063A /* UIBezierPath+Draw.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E47A1A449E7600DE063A /* UIBezierPath+Draw.m */; };
 		05F105581A447C2B00092BEB /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F105571A447C2B00092BEB /* ToDoItem.m */; };
 		05F1055E1A447C5100092BEB /* ToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F1055B1A447C5100092BEB /* ToDoViewController.m */; };
 		05F1055F1A447C5100092BEB /* ToDoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F1055D1A447C5100092BEB /* ToDoViewModel.m */; };
@@ -70,6 +72,10 @@
 		05B0E4711A448A6C00DE063A /* DrawViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawViewCell.m; sourceTree = SOURCE_ROOT; };
 		05B0E4731A448A9D00DE063A /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = SOURCE_ROOT; };
 		05B0E4741A448A9D00DE063A /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = SOURCE_ROOT; };
+		05B0E4761A4494AF00DE063A /* CheckBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckBoxView.h; sourceTree = "<group>"; };
+		05B0E4771A4494AF00DE063A /* CheckBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckBoxView.m; sourceTree = "<group>"; };
+		05B0E4791A449E7600DE063A /* UIBezierPath+Draw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Draw.h"; sourceTree = "<group>"; };
+		05B0E47A1A449E7600DE063A /* UIBezierPath+Draw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Draw.m"; sourceTree = "<group>"; };
 		05F105561A447C2B00092BEB /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoItem.h; sourceTree = "<group>"; };
 		05F105571A447C2B00092BEB /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoItem.m; sourceTree = "<group>"; };
 		05F1055A1A447C5100092BEB /* ToDoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoViewController.h; sourceTree = "<group>"; };
@@ -219,6 +225,8 @@
 				05F1055B1A447C5100092BEB /* ToDoViewController.m */,
 				05F1055C1A447C5100092BEB /* ToDoViewModel.h */,
 				05F1055D1A447C5100092BEB /* ToDoViewModel.m */,
+				05B0E4761A4494AF00DE063A /* CheckBoxView.h */,
+				05B0E4771A4494AF00DE063A /* CheckBoxView.m */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -226,6 +234,8 @@
 		05F105631A447F9700092BEB /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				05B0E4791A449E7600DE063A /* UIBezierPath+Draw.h */,
+				05B0E47A1A449E7600DE063A /* UIBezierPath+Draw.m */,
 				05F105641A447FB200092BEB /* NSArray+Map.h */,
 				05F105651A447FB200092BEB /* NSArray+Map.m */,
 			);
@@ -332,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05B0E4721A448A6C00DE063A /* DrawViewCell.m in Sources */,
+				05B0E47B1A449E7600DE063A /* UIBezierPath+Draw.m in Sources */,
 				05F105661A447FB200092BEB /* NSArray+Map.m in Sources */,
 				05F1055F1A447C5100092BEB /* ToDoViewModel.m in Sources */,
 				055BD0011A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m in Sources */,
@@ -339,6 +350,7 @@
 				05451B201A0AA090004295AC /* AppDelegate.m in Sources */,
 				055BCFFE1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m in Sources */,
 				05F1055E1A447C5100092BEB /* ToDoViewController.m in Sources */,
+				05B0E4781A4494AF00DE063A /* CheckBoxView.m in Sources */,
 				05451B4A1A0AA0DA004295AC /* DLCellItem.m in Sources */,
 				055BCFFA1A2B3208000B0048 /* DLTableView+UITableViewDelegate.m in Sources */,
 				05451B491A0AA0DA004295AC /* LabelCell.m in Sources */,

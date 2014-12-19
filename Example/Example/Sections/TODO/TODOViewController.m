@@ -5,7 +5,7 @@
 #import "ToDoItem.h"
 #import "DrawViewCell.h"
 #import "NSArray+Map.h"
-
+#import "CheckBoxView.h"
 
 NSString * const kLabelCellResuseIdentifier = @"kLabelCellResuseIdentifier";
 NSString * const kThinLineCellResuseIdentifier = @"kThinLineCellResuseIdentifier";
@@ -62,7 +62,7 @@ NSString * const kThinLineCellResuseIdentifier = @"kThinLineCellResuseIdentifier
         // To do item cell
         [cells addObject:[self todoCellItem:toDoItem]];
 
-        // Separtor cell
+        // Separator cell
         UIColor *separatorColor = [UIColor colorWithWhite:180 / 255.0 alpha:0.9];
         UIColor *backgroundColor = toDoItem.done ? kDoneTodoItemCellBackgroundColor : kNormalTodoItemCellBackgroundColor;
         DLCellItem *separatorCellItem = [self thinLineCell:separatorColor cellBackgroundColor:backgroundColor];
@@ -89,6 +89,9 @@ NSString * const kThinLineCellResuseIdentifier = @"kThinLineCellResuseIdentifier
     
     return [DLCellItem itemWithModel:toDoItem height:cellHeight reuseIdentifier:kLabelCellResuseIdentifier target:self action:@selector(toDoCellTapped:) willDisplay:^(DLCellItem *cellItem, UITableViewCell *cell) {
         LabelCell *c = (LabelCell *)cell;
+        CheckBoxView *checkboxView = [[CheckBoxView alloc] initWithFrame:CGRectMake(0, 0, 17, 17)];
+        checkboxView.checked = toDoItem.done;
+        c.accessoryView = checkboxView;
         c.backgroundColor = toDoItem.done ? doneBackgroundColor : normalBackgroundColor;
         c.label.font = font;
         c.label.textColor = toDoItem.done ? doneTextColor : normalTextColor;
