@@ -54,7 +54,7 @@ CGRect TBLRectEdgeInset(CGRect rect, UIEdgeInsets insets) {
     CGRect labelRect = [text boundingRectWithSize:maximumLabelSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil];
     CGSize labelSize = labelRect.size;
     
-    return ceilf(labelSize.height + margins.top + margins.bottom);
+    return 1 + ceilf(labelSize.height + margins.top + margins.bottom);
 }
 
 - (void)prepareForReuse {

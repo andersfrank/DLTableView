@@ -3,10 +3,15 @@
 #import "DLTableView.h"
 #import "LabelCell.h"
 #import "ToDoItem.h"
+#import "DrawViewCell.h"
 #import "NSArray+Map.h"
 
 
 NSString * const kLabelCellResuseIdentifier = @"kLabelCellResuseIdentifier";
+NSString * const kThinLineCellResuseIdentifier = @"kThinLineCellResuseIdentifier";
+
+#define kNormalTodoItemCellBackgroundColor  [UIColor colorWithWhite:252 / 255.0 alpha:1]
+#define kDoneTodoItemCellBackgroundColor    [UIColor clearColor]
 
 
 @interface ToDoViewController ()
@@ -36,8 +41,13 @@ NSString * const kLabelCellResuseIdentifier = @"kLabelCellResuseIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.tableView.backgroundColor = [UIColor colorWithWhite:230 / 255.0 alpha:1];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     [self.tableView registerClass:[LabelCell class] forCellReuseIdentifier:kLabelCellResuseIdentifier];
+    [self.tableView registerClass:[DrawViewCell class] forCellReuseIdentifier:kThinLineCellResuseIdentifier];
+    
     [self reloadTableView];
 }
 
@@ -45,8 +55,19 @@ NSString * const kLabelCellResuseIdentifier = @"kLabelCellResuseIdentifier";
 - (void)reloadTableView {
     
     // Map model objects to DLCellItems
-    NSArray *cells = [self.viewModel.toDoItems arrayByMappingWithBlock:^id(ToDoItem *todoItem) {
-        return [self todoCellItem:todoItem];
+    NSMutableArray *cells = [NSMutableArray new];
+    
+    [self.viewModel.toDoItems enumerateObjectsUsingBlock:^(ToDoItem *toDoItem, NSUInteger idx, BOOL *stop) {
+       
+        // To do item cell
+        [cells addObject:[self todoCellItem:toDoItem]];
+
+        // Separtor cell
+        UIColor *separatorColor = [UIColor colorWithWhite:180 / 255.0 alpha:0.9];
+        UIColor *backgroundColor = toDoItem.done ? kDoneTodoItemCellBackgroundColor : kNormalTodoItemCellBackgroundColor;
+        DLCellItem *separatorCellItem = [self thinLineCell:separatorColor cellBackgroundColor:backgroundColor];
+        [cells addObject:separatorCellItem];
+        
     }];
     
     // Setting the sections will also reload the tableview
@@ -66,7 +87,7 @@ NSString * const kLabelCellResuseIdentifier = @"kLabelCellResuseIdentifier";
     CGFloat cellWidth = [UIScreen mainScreen].bounds.size.width;
     CGFloat cellHeight = [LabelCell cellHeightWithText:toDoItem.title tableViewWidth:cellWidth margins:margins font:font];
     
-    return [DLCellItem itemWithModel:toDoItem height:cellHeight + 1 reuseIdentifier:kLabelCellResuseIdentifier target:self action:@selector(toDoCellTapped:) willDisplay:^(DLCellItem *cellItem, UITableViewCell *cell) {
+    return [DLCellItem itemWithModel:toDoItem height:cellHeight reuseIdentifier:kLabelCellResuseIdentifier target:self action:@selector(toDoCellTapped:) willDisplay:^(DLCellItem *cellItem, UITableViewCell *cell) {
         LabelCell *c = (LabelCell *)cell;
         c.backgroundColor = toDoItem.done ? doneBackgroundColor : normalBackgroundColor;
         c.label.font = font;
@@ -75,6 +96,19 @@ NSString * const kLabelCellResuseIdentifier = @"kLabelCellResuseIdentifier";
         c.label.text = toDoItem.title;
     }];
     
+}
+
+- (DLCellItem *)thinLineCell:(UIColor *)lineColor cellBackgroundColor:(UIColor *)cellBackgroundColor {
+    return [DLCellItem itemWithModel:nil height:1  reuseIdentifier:kThinLineCellResuseIdentifier target:nil action:nil willDisplay:^(DLCellItem *cellItem, UITableViewCell *cell) {
+        DrawViewCell *c = (DrawViewCell *)cell;
+        c.backgroundColor = cellBackgroundColor;
+        c.drawView.drawBlock = ^(CGContextRef context, CGRect frame) {
+            CGContextSetFillColorWithColor(context, lineColor.CGColor);
+            CGRect slice, remainder;
+            CGRectDivide(frame, &slice, &remainder, 0.5, CGRectMaxYEdge);
+            CGContextFillRect(context,slice);
+        };
+    }];
 }
 
 - (void)toDoCellTapped:(DLCellItem *)cellItem {

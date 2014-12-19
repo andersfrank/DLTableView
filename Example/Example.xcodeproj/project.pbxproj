@@ -20,6 +20,8 @@
 		055BCFFA1A2B3208000B0048 /* DLTableView+UITableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 055BCFF91A2B3208000B0048 /* DLTableView+UITableViewDelegate.m */; };
 		055BCFFE1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 055BCFFD1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m */; };
 		055BD0011A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 055BD0001A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m */; };
+		05B0E4721A448A6C00DE063A /* DrawViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4711A448A6C00DE063A /* DrawViewCell.m */; };
+		05B0E4751A448A9D00DE063A /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4741A448A9D00DE063A /* DrawView.m */; };
 		05F105581A447C2B00092BEB /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F105571A447C2B00092BEB /* ToDoItem.m */; };
 		05F1055E1A447C5100092BEB /* ToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F1055B1A447C5100092BEB /* ToDoViewController.m */; };
 		05F1055F1A447C5100092BEB /* ToDoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F1055D1A447C5100092BEB /* ToDoViewModel.m */; };
@@ -64,6 +66,10 @@
 		055BCFFD1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLTableView+UITableViewDataSource.m"; sourceTree = "<group>"; };
 		055BCFFF1A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLTableView+UIScrollViewDelegate.h"; sourceTree = "<group>"; };
 		055BD0001A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLTableView+UIScrollViewDelegate.m"; sourceTree = "<group>"; };
+		05B0E4701A448A6C00DE063A /* DrawViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawViewCell.h; sourceTree = SOURCE_ROOT; };
+		05B0E4711A448A6C00DE063A /* DrawViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawViewCell.m; sourceTree = SOURCE_ROOT; };
+		05B0E4731A448A9D00DE063A /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = SOURCE_ROOT; };
+		05B0E4741A448A9D00DE063A /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = SOURCE_ROOT; };
 		05F105561A447C2B00092BEB /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoItem.h; sourceTree = "<group>"; };
 		05F105571A447C2B00092BEB /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoItem.m; sourceTree = "<group>"; };
 		05F1055A1A447C5100092BEB /* ToDoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoViewController.h; sourceTree = "<group>"; };
@@ -119,6 +125,10 @@
 				05F105551A447C0900092BEB /* Models */,
 				055A4B831A12984400577AD4 /* Sections */,
 				055A4B821A1295CB00577AD4 /* Resources */,
+				05B0E4731A448A9D00DE063A /* DrawView.h */,
+				05B0E4741A448A9D00DE063A /* DrawView.m */,
+				05B0E4701A448A6C00DE063A /* DrawViewCell.h */,
+				05B0E4711A448A6C00DE063A /* DrawViewCell.m */,
 				05451B1E1A0AA090004295AC /* AppDelegate.h */,
 				05451B1F1A0AA090004295AC /* AppDelegate.m */,
 				05451B271A0AA090004295AC /* Images.xcassets */,
@@ -321,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B0E4721A448A6C00DE063A /* DrawViewCell.m in Sources */,
 				05F105661A447FB200092BEB /* NSArray+Map.m in Sources */,
 				05F1055F1A447C5100092BEB /* ToDoViewModel.m in Sources */,
 				055BD0011A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m in Sources */,
@@ -332,6 +343,7 @@
 				055BCFFA1A2B3208000B0048 /* DLTableView+UITableViewDelegate.m in Sources */,
 				05451B491A0AA0DA004295AC /* LabelCell.m in Sources */,
 				05451B1D1A0AA090004295AC /* main.m in Sources */,
+				05B0E4751A448A9D00DE063A /* DrawView.m in Sources */,
 				05F105581A447C2B00092BEB /* ToDoItem.m in Sources */,
 				055A4B811A1293B400577AD4 /* README.md in Sources */,
 				05451B4C1A0AA0DA004295AC /* DLTableView.m in Sources */,

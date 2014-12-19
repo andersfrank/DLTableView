@@ -102,17 +102,47 @@
     return 0;
 }
 
+#ifdef DLTABLEVIEW_USE_AUTOLAYOUT
+
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self tableView:tableView heightForRowAtIndexPath:indexPath];
+    
+    DLSectionItem *sectionItem = [self sectionAtIndexPath:indexPath];
+    if (sectionItem.forwardDelegateAndDataSource) {
+        if ([self.externalDelegate respondsToSelector:@selector(tableView:estimatedHeightForRowAtIndexPath:)]) {
+            return [self.externalDelegate tableView:tableView estimatedHeightForRowAtIndexPath:indexPath];
+        }
+    }
+    else {
+        DLCellItem *cellItem = sectionItem.cellItems[indexPath.row];
+        return cellItem.height;
+    }
+    
+    return 44;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
-    return [self tableView:tableView heightForHeaderInSection:section];
+    DLSectionItem *sectionItem = self.sections[section];
+    if (sectionItem.forwardDelegateAndDataSource) {
+        if ([self.externalDelegate respondsToSelector:@selector(tableView:estimatedHeightForHeaderInSection:)]) {
+            return [self.externalDelegate tableView:tableView estimatedHeightForHeaderInSection:section];
+        }
+    }
+    
+    return [sectionItem headerHeight];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section {
-    return [self tableView:tableView heightForFooterInSection:section];
+    DLSectionItem *sectionItem = self.sections[section];
+    if (sectionItem.forwardDelegateAndDataSource) {
+        if ([self.externalDelegate respondsToSelector:@selector(tableView:estimatedHeightForFooterInSection:)]) {
+            return [self.externalDelegate tableView:tableView estimatedHeightForFooterInSection:section];
+        }
+    }
+    return 0;
 }
+
+#endif
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     DLSectionItem *sectionItem = self.sections[section];
