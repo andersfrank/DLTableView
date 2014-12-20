@@ -1,4 +1,38 @@
 
+
+#import <Foundation/Foundation.h>
+#import "DLCellItem.h"
+#import "DLSectionItem.h"
+
+@class DLTableView;
+
+@protocol DLTableViewDelegate <UIScrollViewDelegate>
+
+@optional
+
+/**
+ *  Called when a cell item has been moved, so that the model layer can optionally be updated.
+ *
+ *  @param tableView    The table view
+ *  @param cellItem     The moved cell item
+ *  @param oldRow       The old row of the cell item
+ *  @param newRow       The new row of the cell item
+ */
+- (void)tableView:(DLTableView *)tableView
+  cellItemDidMove:(DLCellItem *)cellItem
+          fromRow:(NSUInteger)oldRow
+            toRow:(NSUInteger)newRow;
+
+@end
+
+
+typedef enum {
+    DLCellPositionMiddle,
+    DLCellPositionTop,
+    DLCellPositionBottom,
+    DLCellPositionSingle,
+}DLCellPosition;
+
 /*
  
  By default the DLTableView will handle most of the table views delegates and datasource protocol methods.
@@ -15,21 +49,9 @@
  
  */
 
-#import <Foundation/Foundation.h>
-#import "DLCellItem.h"
-#import "DLSectionItem.h"
-
-typedef enum {
-    DLCellPositionMiddle,
-    DLCellPositionTop,
-    DLCellPositionBottom,
-    DLCellPositionSingle,
-}DLCellPosition;
-
-
-@class DLSectionItem, DLCellItem;
-
 @interface DLTableView : UITableView 
+
+@property (nonatomic, assign) id <DLTableViewDelegate> tableViewDelegate;
 
 /**
  *   The TBLSection objects of the table view. Setting the sections will reload the table view.
@@ -204,3 +226,4 @@ typedef enum {
 - (void)reloadCellItems:(NSArray *)cellItems withRowAnimation:(UITableViewRowAnimation)animation;
 
 @end
+

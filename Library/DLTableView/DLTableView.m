@@ -2,8 +2,6 @@
 #import "DLTableView.h"
 #import "DLSectionItem.h"
 #import "DLCellItem.h"
-#import "DLCellItem+Private.h"
-#import "DLTableView+Private.h"
 #import "DLTableView+UIScrollViewDelegate.h"
 #import "DLTableView+UITableViewDataSource.h"
 #import "DLTableView+UITableViewDelegate.h"
@@ -13,14 +11,6 @@
 - (void)awakeFromNib {
     super.dataSource = self;
     super.delegate = self;
-}
-
-- (void)setDelegate:(id<UITableViewDelegate>)delegate {
-    _externalDelegate = delegate;
-}
-
-- (void)setDataSource:(id<UITableViewDataSource>)dataSource {
-    _externalDataSource = dataSource;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style

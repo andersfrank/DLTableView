@@ -6,6 +6,8 @@
 
 @interface DLSectionItem : NSObject
 
+@property (nonatomic, assign) id <UITableViewDelegate> delegate;
+@property (nonatomic, assign) id <UITableViewDataSource> dataSource;
 
 /**
  *  The section will opt out of handling table view delegate and datasource.
@@ -34,6 +36,21 @@
  *  The height of the header
  */
 @property (nonatomic, assign) CGFloat headerHeight;
+
+/**
+ *  The height of the footer
+ */
+@property (nonatomic, assign) CGFloat footerHeight;
+
+/**
+ *  The footer view of the section
+ */
+@property (nonatomic, strong) UIView *footerView;
+
+/**
+ *  The footer title of the section
+ */
+@property (nonatomic, copy) NSString *footerTitle;
 
 /**
  * All cells in section are made movable. Cells can only be moved within section.

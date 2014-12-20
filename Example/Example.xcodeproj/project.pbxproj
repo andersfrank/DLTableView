@@ -12,12 +12,6 @@
 		05451B281A0AA090004295AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05451B271A0AA090004295AC /* Images.xcassets */; };
 		05451B2B1A0AA090004295AC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05451B291A0AA090004295AC /* LaunchScreen.xib */; };
 		05451B371A0AA091004295AC /* ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05451B361A0AA091004295AC /* ExampleTests.m */; };
-		05451B4A1A0AA0DA004295AC /* DLCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05451B441A0AA0DA004295AC /* DLCellItem.m */; };
-		05451B4B1A0AA0DA004295AC /* DLSectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05451B461A0AA0DA004295AC /* DLSectionItem.m */; };
-		05451B4C1A0AA0DA004295AC /* DLTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05451B481A0AA0DA004295AC /* DLTableView.m */; };
-		055BCFFA1A2B3208000B0048 /* DLTableView+UITableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 055BCFF91A2B3208000B0048 /* DLTableView+UITableViewDelegate.m */; };
-		055BCFFE1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 055BCFFD1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m */; };
-		055BD0011A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 055BD0001A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m */; };
 		05B0E4781A4494AF00DE063A /* CheckBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4771A4494AF00DE063A /* CheckBoxView.m */; };
 		05B0E47B1A449E7600DE063A /* UIBezierPath+Draw.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E47A1A449E7600DE063A /* UIBezierPath+Draw.m */; };
 		05B0E47F1A44D14600DE063A /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E47E1A44D14600DE063A /* StartViewController.m */; };
@@ -29,7 +23,14 @@
 		05B0E4941A45679A00DE063A /* LabelCellMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4911A45679A00DE063A /* LabelCellMaker.m */; };
 		05B0E4951A45679A00DE063A /* SpacingCellMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4931A45679A00DE063A /* SpacingCellMaker.m */; };
 		05B0E4991A45689000DE063A /* MoveableCellsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4981A45689000DE063A /* MoveableCellsViewController.m */; };
-		05B0E49C1A457A4200DE063A /* Moveable.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E49B1A457A4200DE063A /* Moveable.m */; };
+		05B0E4BC1A45FB9A00DE063A /* DLCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4AB1A45FB9A00DE063A /* DLCellItem.m */; };
+		05B0E4BD1A45FB9A00DE063A /* DLSectionItem+DLTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4AE1A45FB9A00DE063A /* DLSectionItem+DLTableViewDelegate.m */; };
+		05B0E4BE1A45FB9A00DE063A /* DLSectionItem+UITableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4B01A45FB9A00DE063A /* DLSectionItem+UITableViewDataSource.m */; };
+		05B0E4BF1A45FB9A00DE063A /* DLSectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4B21A45FB9A00DE063A /* DLSectionItem.m */; };
+		05B0E4C01A45FB9A00DE063A /* DLTableView+UIScrollViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4B51A45FB9A00DE063A /* DLTableView+UIScrollViewDelegate.m */; };
+		05B0E4C11A45FB9A00DE063A /* DLTableView+UITableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4B71A45FB9A00DE063A /* DLTableView+UITableViewDataSource.m */; };
+		05B0E4C21A45FB9A00DE063A /* DLTableView+UITableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4B91A45FB9A00DE063A /* DLTableView+UITableViewDelegate.m */; };
+		05B0E4C31A45FB9A00DE063A /* DLTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4BB1A45FB9A00DE063A /* DLTableView.m */; };
 		05F105581A447C2B00092BEB /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F105571A447C2B00092BEB /* ToDoItem.m */; };
 		05F1055E1A447C5100092BEB /* ToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F1055B1A447C5100092BEB /* ToDoViewController.m */; };
 		05F1055F1A447C5100092BEB /* ToDoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F1055D1A447C5100092BEB /* ToDoViewModel.m */; };
@@ -57,20 +58,6 @@
 		05451B301A0AA091004295AC /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05451B351A0AA091004295AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05451B361A0AA091004295AC /* ExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleTests.m; sourceTree = "<group>"; };
-		05451B431A0AA0DA004295AC /* DLCellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCellItem.h; sourceTree = "<group>"; };
-		05451B441A0AA0DA004295AC /* DLCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLCellItem.m; sourceTree = "<group>"; };
-		05451B451A0AA0DA004295AC /* DLSectionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSectionItem.h; sourceTree = "<group>"; };
-		05451B461A0AA0DA004295AC /* DLSectionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSectionItem.m; sourceTree = "<group>"; };
-		05451B471A0AA0DA004295AC /* DLTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTableView.h; sourceTree = "<group>"; };
-		05451B481A0AA0DA004295AC /* DLTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTableView.m; sourceTree = "<group>"; };
-		055BCFF51A2AFF92000B0048 /* DLCellItem+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLCellItem+Private.h"; sourceTree = "<group>"; };
-		055BCFF81A2B3208000B0048 /* DLTableView+UITableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLTableView+UITableViewDelegate.h"; sourceTree = "<group>"; };
-		055BCFF91A2B3208000B0048 /* DLTableView+UITableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLTableView+UITableViewDelegate.m"; sourceTree = "<group>"; };
-		055BCFFB1A2B3409000B0048 /* DLTableView+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLTableView+Private.h"; sourceTree = "<group>"; };
-		055BCFFC1A2B4051000B0048 /* DLTableView+UITableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLTableView+UITableViewDataSource.h"; sourceTree = "<group>"; };
-		055BCFFD1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLTableView+UITableViewDataSource.m"; sourceTree = "<group>"; };
-		055BCFFF1A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLTableView+UIScrollViewDelegate.h"; sourceTree = "<group>"; };
-		055BD0001A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLTableView+UIScrollViewDelegate.m"; sourceTree = "<group>"; };
 		05B0E4761A4494AF00DE063A /* CheckBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckBoxView.h; sourceTree = "<group>"; };
 		05B0E4771A4494AF00DE063A /* CheckBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckBoxView.m; sourceTree = "<group>"; };
 		05B0E4791A449E7600DE063A /* UIBezierPath+Draw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Draw.h"; sourceTree = "<group>"; };
@@ -92,8 +79,23 @@
 		05B0E4931A45679A00DE063A /* SpacingCellMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpacingCellMaker.m; sourceTree = "<group>"; };
 		05B0E4971A45689000DE063A /* MoveableCellsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveableCellsViewController.h; sourceTree = "<group>"; };
 		05B0E4981A45689000DE063A /* MoveableCellsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveableCellsViewController.m; sourceTree = "<group>"; };
-		05B0E49A1A457A4200DE063A /* Moveable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Moveable.h; sourceTree = "<group>"; };
-		05B0E49B1A457A4200DE063A /* Moveable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Moveable.m; sourceTree = "<group>"; };
+		05B0E4A91A45FB9A00DE063A /* DLCellItem+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLCellItem+Private.h"; sourceTree = "<group>"; };
+		05B0E4AA1A45FB9A00DE063A /* DLCellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCellItem.h; sourceTree = "<group>"; };
+		05B0E4AB1A45FB9A00DE063A /* DLCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLCellItem.m; sourceTree = "<group>"; };
+		05B0E4AD1A45FB9A00DE063A /* DLSectionItem+DLTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLSectionItem+DLTableViewDelegate.h"; sourceTree = "<group>"; };
+		05B0E4AE1A45FB9A00DE063A /* DLSectionItem+DLTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLSectionItem+DLTableViewDelegate.m"; sourceTree = "<group>"; };
+		05B0E4AF1A45FB9A00DE063A /* DLSectionItem+UITableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLSectionItem+UITableViewDataSource.h"; sourceTree = "<group>"; };
+		05B0E4B01A45FB9A00DE063A /* DLSectionItem+UITableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLSectionItem+UITableViewDataSource.m"; sourceTree = "<group>"; };
+		05B0E4B11A45FB9A00DE063A /* DLSectionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSectionItem.h; sourceTree = "<group>"; };
+		05B0E4B21A45FB9A00DE063A /* DLSectionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSectionItem.m; sourceTree = "<group>"; };
+		05B0E4B41A45FB9A00DE063A /* DLTableView+UIScrollViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLTableView+UIScrollViewDelegate.h"; sourceTree = "<group>"; };
+		05B0E4B51A45FB9A00DE063A /* DLTableView+UIScrollViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLTableView+UIScrollViewDelegate.m"; sourceTree = "<group>"; };
+		05B0E4B61A45FB9A00DE063A /* DLTableView+UITableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLTableView+UITableViewDataSource.h"; sourceTree = "<group>"; };
+		05B0E4B71A45FB9A00DE063A /* DLTableView+UITableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLTableView+UITableViewDataSource.m"; sourceTree = "<group>"; };
+		05B0E4B81A45FB9A00DE063A /* DLTableView+UITableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLTableView+UITableViewDelegate.h"; sourceTree = "<group>"; };
+		05B0E4B91A45FB9A00DE063A /* DLTableView+UITableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLTableView+UITableViewDelegate.m"; sourceTree = "<group>"; };
+		05B0E4BA1A45FB9A00DE063A /* DLTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTableView.h; sourceTree = "<group>"; };
+		05B0E4BB1A45FB9A00DE063A /* DLTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTableView.m; sourceTree = "<group>"; };
 		05F105561A447C2B00092BEB /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoItem.h; sourceTree = "<group>"; };
 		05F105571A447C2B00092BEB /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoItem.m; sourceTree = "<group>"; };
 		05F1055A1A447C5100092BEB /* ToDoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoViewController.h; sourceTree = "<group>"; };
@@ -125,7 +127,7 @@
 		05451B0E1A0AA090004295AC = {
 			isa = PBXGroup;
 			children = (
-				05451B401A0AA0DA004295AC /* Source */,
+				05B0E4A71A45FB9A00DE063A /* Library */,
 				05451B191A0AA090004295AC /* Example */,
 				05451B331A0AA091004295AC /* ExampleTests */,
 				05451B181A0AA090004295AC /* Products */,
@@ -183,28 +185,6 @@
 				05451B351A0AA091004295AC /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		05451B401A0AA0DA004295AC /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				05451B431A0AA0DA004295AC /* DLCellItem.h */,
-				05451B441A0AA0DA004295AC /* DLCellItem.m */,
-				055BCFF51A2AFF92000B0048 /* DLCellItem+Private.h */,
-				05451B451A0AA0DA004295AC /* DLSectionItem.h */,
-				05451B461A0AA0DA004295AC /* DLSectionItem.m */,
-				05451B471A0AA0DA004295AC /* DLTableView.h */,
-				05451B481A0AA0DA004295AC /* DLTableView.m */,
-				055BCFFB1A2B3409000B0048 /* DLTableView+Private.h */,
-				055BCFF81A2B3208000B0048 /* DLTableView+UITableViewDelegate.h */,
-				055BCFF91A2B3208000B0048 /* DLTableView+UITableViewDelegate.m */,
-				055BCFFC1A2B4051000B0048 /* DLTableView+UITableViewDataSource.h */,
-				055BCFFD1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m */,
-				055BCFFF1A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.h */,
-				055BD0001A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m */,
-			);
-			name = Source;
-			path = ../Source;
 			sourceTree = "<group>";
 		};
 		055A4B821A1295CB00577AD4 /* Resources */ = {
@@ -265,10 +245,57 @@
 			children = (
 				05B0E4971A45689000DE063A /* MoveableCellsViewController.h */,
 				05B0E4981A45689000DE063A /* MoveableCellsViewController.m */,
-				05B0E49A1A457A4200DE063A /* Moveable.h */,
-				05B0E49B1A457A4200DE063A /* Moveable.m */,
 			);
 			path = ReorderCells;
+			sourceTree = "<group>";
+		};
+		05B0E4A71A45FB9A00DE063A /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				05B0E4A81A45FB9A00DE063A /* DLCellItem */,
+				05B0E4AC1A45FB9A00DE063A /* DLSectionItem */,
+				05B0E4B31A45FB9A00DE063A /* DLTableView */,
+			);
+			name = Library;
+			path = ../Library;
+			sourceTree = "<group>";
+		};
+		05B0E4A81A45FB9A00DE063A /* DLCellItem */ = {
+			isa = PBXGroup;
+			children = (
+				05B0E4A91A45FB9A00DE063A /* DLCellItem+Private.h */,
+				05B0E4AA1A45FB9A00DE063A /* DLCellItem.h */,
+				05B0E4AB1A45FB9A00DE063A /* DLCellItem.m */,
+			);
+			path = DLCellItem;
+			sourceTree = "<group>";
+		};
+		05B0E4AC1A45FB9A00DE063A /* DLSectionItem */ = {
+			isa = PBXGroup;
+			children = (
+				05B0E4AD1A45FB9A00DE063A /* DLSectionItem+DLTableViewDelegate.h */,
+				05B0E4AE1A45FB9A00DE063A /* DLSectionItem+DLTableViewDelegate.m */,
+				05B0E4AF1A45FB9A00DE063A /* DLSectionItem+UITableViewDataSource.h */,
+				05B0E4B01A45FB9A00DE063A /* DLSectionItem+UITableViewDataSource.m */,
+				05B0E4B11A45FB9A00DE063A /* DLSectionItem.h */,
+				05B0E4B21A45FB9A00DE063A /* DLSectionItem.m */,
+			);
+			path = DLSectionItem;
+			sourceTree = "<group>";
+		};
+		05B0E4B31A45FB9A00DE063A /* DLTableView */ = {
+			isa = PBXGroup;
+			children = (
+				05B0E4B41A45FB9A00DE063A /* DLTableView+UIScrollViewDelegate.h */,
+				05B0E4B51A45FB9A00DE063A /* DLTableView+UIScrollViewDelegate.m */,
+				05B0E4B61A45FB9A00DE063A /* DLTableView+UITableViewDataSource.h */,
+				05B0E4B71A45FB9A00DE063A /* DLTableView+UITableViewDataSource.m */,
+				05B0E4B81A45FB9A00DE063A /* DLTableView+UITableViewDelegate.h */,
+				05B0E4B91A45FB9A00DE063A /* DLTableView+UITableViewDelegate.m */,
+				05B0E4BA1A45FB9A00DE063A /* DLTableView.h */,
+				05B0E4BB1A45FB9A00DE063A /* DLTableView.m */,
+			);
+			path = DLTableView;
 			sourceTree = "<group>";
 		};
 		05F105551A447C0900092BEB /* Models */ = {
@@ -404,28 +431,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B0E4BC1A45FB9A00DE063A /* DLCellItem.m in Sources */,
 				05B0E47B1A449E7600DE063A /* UIBezierPath+Draw.m in Sources */,
 				05F105661A447FB200092BEB /* NSArray+Map.m in Sources */,
+				05B0E4C01A45FB9A00DE063A /* DLTableView+UIScrollViewDelegate.m in Sources */,
 				05F1055F1A447C5100092BEB /* ToDoViewModel.m in Sources */,
-				055BD0011A2B4656000B0048 /* DLTableView+UIScrollViewDelegate.m in Sources */,
 				05B0E4991A45689000DE063A /* MoveableCellsViewController.m in Sources */,
-				05451B4B1A0AA0DA004295AC /* DLSectionItem.m in Sources */,
 				05451B201A0AA090004295AC /* AppDelegate.m in Sources */,
-				055BCFFE1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m in Sources */,
 				05B0E4951A45679A00DE063A /* SpacingCellMaker.m in Sources */,
-				05B0E49C1A457A4200DE063A /* Moveable.m in Sources */,
 				05F1055E1A447C5100092BEB /* ToDoViewController.m in Sources */,
 				05B0E4781A4494AF00DE063A /* CheckBoxView.m in Sources */,
-				05451B4A1A0AA0DA004295AC /* DLCellItem.m in Sources */,
 				05B0E4841A451BA700DE063A /* CategoryCell.m in Sources */,
+				05B0E4BF1A45FB9A00DE063A /* DLSectionItem.m in Sources */,
 				05B0E48C1A45649700DE063A /* DrawView.m in Sources */,
 				05B0E48D1A45649700DE063A /* DrawViewCell.m in Sources */,
-				055BCFFA1A2B3208000B0048 /* DLTableView+UITableViewDelegate.m in Sources */,
+				05B0E4C11A45FB9A00DE063A /* DLTableView+UITableViewDataSource.m in Sources */,
+				05B0E4C21A45FB9A00DE063A /* DLTableView+UITableViewDelegate.m in Sources */,
+				05B0E4BE1A45FB9A00DE063A /* DLSectionItem+UITableViewDataSource.m in Sources */,
 				05451B1D1A0AA090004295AC /* main.m in Sources */,
 				05B0E48E1A45649700DE063A /* LabelCell.m in Sources */,
+				05B0E4C31A45FB9A00DE063A /* DLTableView.m in Sources */,
 				05B0E47F1A44D14600DE063A /* StartViewController.m in Sources */,
+				05B0E4BD1A45FB9A00DE063A /* DLSectionItem+DLTableViewDelegate.m in Sources */,
 				05F105581A447C2B00092BEB /* ToDoItem.m in Sources */,
-				05451B4C1A0AA0DA004295AC /* DLTableView.m in Sources */,
 				05B0E4941A45679A00DE063A /* LabelCellMaker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

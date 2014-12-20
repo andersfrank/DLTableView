@@ -16,6 +16,8 @@
     self = [super init];
     if (self) {
         self.shouldIndentWhileEditing = YES;
+        self.height = UITableViewAutomaticDimension;
+        self.indentationLevel = UITableViewAutomaticDimension;
     }
     return self;
 }

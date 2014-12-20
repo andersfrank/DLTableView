@@ -10,6 +10,16 @@
 
 @implementation DLSectionItem
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.headerHeight = UITableViewAutomaticDimension;
+        self.footerHeight = UITableViewAutomaticDimension;
+    }
+    return self;
+}
+
 + (DLSectionItem*)itemWithCells:(NSArray*)cells; {
     DLSectionItem *section = [DLSectionItem new];
     section.cellItems = cells;

@@ -8,6 +8,7 @@ typedef void(^WillDisplayBlock)(DLCellItem *cellItem, UITableViewCell *cell);
 
 @interface DLCellItem : NSObject
 
+
 /**
  *  The identifier of the cell. Needs to be registered in the tableview.
  */
@@ -47,6 +48,11 @@ typedef void(^WillDisplayBlock)(DLCellItem *cellItem, UITableViewCell *cell);
  *  The indentation level.
  */
 @property (nonatomic, assign) NSInteger indentationLevel;
+
+/**
+ *  Whether or not the cell is moveable. Movement is resctricted to be within one section.
+ */
+@property (nonatomic, assign) BOOL canMove;
 
 /**
  *  Action called when the cell is tapped.

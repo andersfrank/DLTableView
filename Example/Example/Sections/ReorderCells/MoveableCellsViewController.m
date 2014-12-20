@@ -5,7 +5,7 @@
 #import "LabelCellMaker.h"
 #import "LabelCell.h"
 
-@interface MoveableCellsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MoveableCellsViewController () <UITableViewDataSource, UITableViewDelegate, DLTableViewDelegate>
 
 @property (nonatomic) DLTableView *tableView;
 @property (nonatomic) LabelCellMaker *paragraphCellMaker;
@@ -46,11 +46,7 @@
     self.tableView.backgroundColor = [UIColor colorWithWhite:230 / 255.0 alpha:1];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.editing = YES;
-    
-    // Becase we wan't to implement the data source and delegate for one section
-    // we need to set the delegate and data source.
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    self.tableView.tableViewDelegate = self;
     
     [self.view addSubview:self.tableView];
     
@@ -64,7 +60,8 @@
     
     self.moveableSection = [DLSectionItem new];
     // For this section we handle the delegate and data source methods in the traditional way.
-    self.moveableSection.forwardDelegateAndDataSource = YES;
+    self.moveableSection.delegate = self;
+    self.moveableSection.dataSource = self;
     
     self.tableView.sections = @[headerSection, self.moveableSection];
     
@@ -123,6 +120,15 @@
 
 - (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleNone;
+}
+
+#pragma mark - DLTableViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"scrollView did scroll");
 }
 
 @end
