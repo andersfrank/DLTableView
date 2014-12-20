@@ -1,16 +1,15 @@
 
 #import "MoveableCellsViewController.h"
 #import "DLTableView.h"
-#import "SpacingCellMaker.h"
-#import "LabelCellMaker.h"
 #import "LabelCell.h"
+#import "NSArray+Map.h"
 
-@interface MoveableCellsViewController () <UITableViewDataSource, UITableViewDelegate, DLTableViewDelegate>
+NSString * const kNumbersDefaultsKey = @"kNumbersDefaultsKey";
+
+@interface MoveableCellsViewController () <DLTableViewDelegate>
 
 @property (nonatomic) DLTableView *tableView;
-@property (nonatomic) LabelCellMaker *paragraphCellMaker;
-@property (nonatomic) DLSectionItem *moveableSection;
-@property (nonatomic) NSArray *moveableTitles;
+@property (nonatomic) NSMutableArray *numbers;
 
 @end
 
@@ -22,15 +21,12 @@
     if (self) {
         
         self.title = @"Moveable Cells";
+       
+        // Register default values
+        [[NSUserDefaults standardUserDefaults] registerDefaults:@{kNumbersDefaultsKey : @[@"One", @"Two", @"Three", @"Four", @"Five"]}];
         
-        UIEdgeInsets margins = UIEdgeInsetsMake(0, 10, 0, 10);
-        
-        // A convience class for making cell items. Not part of the library.
-        self.paragraphCellMaker = [[LabelCellMaker alloc]
-                                   initWithFont:[UIFont systemFontOfSize:16]
-                                   textColor:[UIColor blackColor] margins:margins];
-        
-        self.moveableTitles = @[@"One", @"Two", @"Three", @"Four", @"Five"];
+        // Load from defaults
+        self.numbers = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:kNumbersDefaultsKey]];
 
     }
     return self;
@@ -47,87 +43,43 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.editing = YES;
     self.tableView.tableViewDelegate = self;
-    
     [self.view addSubview:self.tableView];
     
-    // Register cell reuse identifiers
-    [LabelCellMaker registerCellClasses:self.tableView];
-    [SpacingCellMaker registerCellClasses:self.tableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"MoveableCell"];
     
-    DLSectionItem *headerSection = [DLSectionItem new];
-    headerSection.cellItems = @[];
+    // Map to cells.
+    NSArray *cells = [self.numbers arrayByMappingWithBlock:^id(NSString *title) {
+        DLCellItem *cellItem = [DLCellItem new];
+        cellItem.reuseIdentifier = @"MoveableCell";
+        cellItem.editingStyle = UITableViewCellEditingStyleNone;
+        cellItem.canMove = YES;
+        cellItem.shouldIndentWhileEditing = NO;
+        cellItem.model = title;
+        cellItem.willDisplayBlock = ^(DLCellItem *cellItem, UITableViewCell *cell) {
+            cell.textLabel.text = title;
+        };
+        return cellItem;
+    }];
+                      
+    self.tableView.sections = @[[DLSectionItem itemWithCells:cells]];
     
-    self.moveableSection = [DLSectionItem new];
-    // For this section we handle the delegate and data source methods in the traditional way.
-    self.moveableSection.delegate = self;
-    self.moveableSection.dataSource = self;
-    
-    self.tableView.sections = @[headerSection, self.moveableSection];
-    
-}
-
-#pragma mark - UITableViewDataSource
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == [self.tableView indexPathSection:self.moveableSection]) {
-        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MoveableCell"];
-        cell.textLabel.text = self.moveableTitles[indexPath.row];
-        cell.showsReorderControl = YES;
-        return cell;
-    }
-    else {
-        return nil;
-    }
-
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == [self.tableView indexPathSection:self.moveableSection]) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    NSInteger moveableSection = [self.tableView indexPathSection:self.moveableSection];
-    if (sourceIndexPath.section == moveableSection && destinationIndexPath.section == moveableSection) {
-        
-        NSMutableArray *titles = [NSMutableArray arrayWithArray:self.moveableTitles];
-        NSString *movingTitle = titles[sourceIndexPath.row];
-        
-        [titles removeObject:movingTitle];
-        [titles insertObject:movingTitle atIndex:destinationIndexPath.row];
-        
-        self.moveableTitles = [NSArray arrayWithArray:titles];
-        
-        [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:destinationIndexPath];
-    }
-    
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == [self.tableView indexPathSection:self.moveableSection]) {
-        return self.moveableTitles.count;
-    } else {
-        return 0;
-    }
-}
-
-#pragma mark - UITableViewDelegate
-
-- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
-}
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewCellEditingStyleNone;
 }
 
 #pragma mark - DLTableViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"scrollView did scroll");
+
+- (void)tableView:(DLTableView *)tableView
+  cellItemDidMove:(DLCellItem *)cellItem
+          fromRow:(NSUInteger)oldRow
+            toRow:(NSUInteger)newRow {
+
+    // Update model layer.
+    NSString *movedNumber = self.numbers[oldRow];
+    [self.numbers removeObject:movedNumber];
+    [self.numbers insertObject:movedNumber atIndex:newRow];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.numbers forKey:kNumbersDefaultsKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
 }
 
 @end
