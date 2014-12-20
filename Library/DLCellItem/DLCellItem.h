@@ -55,6 +55,11 @@ typedef void(^WillDisplayBlock)(DLCellItem *cellItem, UITableViewCell *cell);
 @property (nonatomic, assign) BOOL canMove;
 
 /**
+ *  The editing style of the cell.
+ */
+@property (nonatomic, assign) UITableViewCellEditingStyle editingStyle;
+
+/**
  *  Action called when the cell is tapped.
  *
  *  @param target The target of the action

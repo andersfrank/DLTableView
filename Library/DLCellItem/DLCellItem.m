@@ -18,6 +18,7 @@
         self.shouldIndentWhileEditing = YES;
         self.height = UITableViewAutomaticDimension;
         self.indentationLevel = UITableViewAutomaticDimension;
+        self.editingStyle = UITableViewCellEditingStyleDelete;
     }
     return self;
 }

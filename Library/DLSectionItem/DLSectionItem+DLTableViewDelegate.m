@@ -210,11 +210,18 @@
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.delegate respondsToSelector:_cmd]) {
-        return [self.delegate tableView:tableView editingStyleForRowAtIndexPath:indexPath];
+    if (self.delegate) {
+        
+        if ([self.delegate respondsToSelector:_cmd]) {
+            return [self.delegate tableView:tableView editingStyleForRowAtIndexPath:indexPath];
+        }
+        else {
+            return UITableViewCellEditingStyleDelete;
+        }
     }
     else {
-        return UITableViewCellEditingStyleDelete;
+        DLCellItem *cellItem = self.cellItems[indexPath.row];
+        return cellItem.editingStyle;
     }
 }
 
