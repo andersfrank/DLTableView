@@ -29,7 +29,7 @@ NSString * const kThinLineCellResuseIdentifier = @"kThinLineCellResuseIdentifier
     self = [super init];
     if (self) {
         self.viewModel = viewModel;
-        self.title = @"TODO";
+        self.title = @"To-Do List";
     }
     return self;
     
@@ -51,6 +51,19 @@ NSString * const kThinLineCellResuseIdentifier = @"kThinLineCellResuseIdentifier
     [self reloadTableView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    UINavigationBar *navBar = self.navigationController.navigationBar;
+    
+    navBar.tintColor = [UIColor whiteColor];
+    navBar.barTintColor = [UIColor colorWithRed:0.396 green:0.529 blue:0.714 alpha:1];
+    navBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    navBar.translucent = NO;
+
+}
 
 - (void)reloadTableView {
     
