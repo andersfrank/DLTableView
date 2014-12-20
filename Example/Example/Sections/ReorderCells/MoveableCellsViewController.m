@@ -82,7 +82,6 @@
 
 }
 
-
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == [self.tableView indexPathSection:self.moveableSection]) {
         return YES;
