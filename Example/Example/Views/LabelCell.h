@@ -21,6 +21,21 @@
  *
  *  @return The cell height
  */
-+ (CGFloat)cellHeightWithText:(NSString *)text tableViewWidth:(CGFloat)tableViewWidth margins:(UIEdgeInsets)margins font:(UIFont *)font;
++ (CGFloat)cellHeightWithText:(NSString *)text
+               tableViewWidth:(CGFloat)tableViewWidth
+                      margins:(UIEdgeInsets)margins font:(UIFont *)font;
+
+/**
+ *  Calculates the height of the cell
+ *
+ *  @param attributedText The attributed text
+ *  @param tableViewWidth The width of the tableview where the cell will be displayed
+ *  @param margins        The margins surrounding the label
+ *
+ *  @return The cell height
+ */
++ (CGFloat)cellHeightWithAttributedText:(NSAttributedString *)attributedText
+                         tableViewWidth:(CGFloat)tableViewWidth
+                                margins:(UIEdgeInsets)margins;
 
 @end
