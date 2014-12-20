@@ -10,6 +10,7 @@
 #import "DLTableView.h"
 #import "CategoryCell.h"
 #import "ToDoViewController.h"
+#import "MoveableCellsViewController.h"
 
 @interface StartViewController ()
 @property (nonatomic, readonly) DLTableView *tableView;
@@ -30,7 +31,8 @@
     [super viewDidLoad];
     
     NSArray *cells = @[
-                       [self cateoryCellItem:@"To-Do List" tapAction:@selector(toDoCellTapped)]
+                       [self cateoryCellItem:@"To-Do List" tapAction:@selector(toDoCellTapped)],
+                       [self cateoryCellItem:@"Moveable cells" tapAction:@selector(moveableExampleCellTapped)]
                        ];
     
     self.tableView.sections = @[[DLSectionItem itemWithCells:cells]];
@@ -61,6 +63,11 @@
 
 - (void)toDoCellTapped {
     ToDoViewController *vc = [[ToDoViewController alloc] initWitViewModel:[ToDoViewModel new]];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)moveableExampleCellTapped {
+    MoveableCellsViewController *vc = [MoveableCellsViewController new];
     [self.navigationController pushViewController:vc animated:YES];
 }
                                 
