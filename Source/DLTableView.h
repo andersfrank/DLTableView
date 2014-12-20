@@ -99,6 +99,15 @@ typedef enum {
 - (NSIndexPath *)indexPathForCellItem:(DLCellItem *)cellInfo;
 
 /**
+ *  The index path section of a section item
+ *
+ *  @param sectionItem The section item
+ *
+ *  @return The index path section
+ */
+- (NSUInteger)indexPathSection:(DLSectionItem *)sectionItem;
+
+/**
  *  Returns a cell position for a cetina CellItem
  *
  *  @param cellItem The cell item

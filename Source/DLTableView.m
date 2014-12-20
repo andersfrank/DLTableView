@@ -228,6 +228,10 @@
     return nil;
 }
 
+- (NSUInteger)indexPathSection:(DLSectionItem *)sectionItem {
+    return [self.sections indexOfObject:sectionItem];
+}
+
 - (NSArray*)indexPathsWithCellIdentifier:(NSString*)cellIdentifier {
     
     NSMutableArray *indexPaths = [NSMutableArray new];
