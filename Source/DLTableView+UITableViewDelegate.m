@@ -314,7 +314,7 @@
         }
     }
     
-    return sourceIndexPath;
+    return proposedDestinationIndexPath;
     
 }
 
