@@ -26,6 +26,8 @@
 		05B0E48C1A45649700DE063A /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4871A45649700DE063A /* DrawView.m */; };
 		05B0E48D1A45649700DE063A /* DrawViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4891A45649700DE063A /* DrawViewCell.m */; };
 		05B0E48E1A45649700DE063A /* LabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E48B1A45649700DE063A /* LabelCell.m */; };
+		05B0E4941A45679A00DE063A /* LabelCellMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4911A45679A00DE063A /* LabelCellMaker.m */; };
+		05B0E4951A45679A00DE063A /* SpacingCellMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B0E4931A45679A00DE063A /* SpacingCellMaker.m */; };
 		05F105581A447C2B00092BEB /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F105571A447C2B00092BEB /* ToDoItem.m */; };
 		05F1055E1A447C5100092BEB /* ToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F1055B1A447C5100092BEB /* ToDoViewController.m */; };
 		05F1055F1A447C5100092BEB /* ToDoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F1055D1A447C5100092BEB /* ToDoViewModel.m */; };
@@ -82,6 +84,10 @@
 		05B0E4891A45649700DE063A /* DrawViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawViewCell.m; sourceTree = "<group>"; };
 		05B0E48A1A45649700DE063A /* LabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelCell.h; sourceTree = "<group>"; };
 		05B0E48B1A45649700DE063A /* LabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelCell.m; sourceTree = "<group>"; };
+		05B0E4901A45679A00DE063A /* LabelCellMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelCellMaker.h; sourceTree = "<group>"; };
+		05B0E4911A45679A00DE063A /* LabelCellMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelCellMaker.m; sourceTree = "<group>"; };
+		05B0E4921A45679A00DE063A /* SpacingCellMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpacingCellMaker.h; sourceTree = "<group>"; };
+		05B0E4931A45679A00DE063A /* SpacingCellMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpacingCellMaker.m; sourceTree = "<group>"; };
 		05F105561A447C2B00092BEB /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoItem.h; sourceTree = "<group>"; };
 		05F105571A447C2B00092BEB /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoItem.m; sourceTree = "<group>"; };
 		05F1055A1A447C5100092BEB /* ToDoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoViewController.h; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 			children = (
 				055A4B831A12984400577AD4 /* Sections */,
 				05B0E4851A45649700DE063A /* Views */,
+				05B0E48F1A45679A00DE063A /* CellMakers */,
 				05F105631A447F9700092BEB /* Categories */,
 				05F105551A447C0900092BEB /* Models */,
 				055A4B821A1295CB00577AD4 /* Resources */,
@@ -233,6 +240,17 @@
 				05B0E48B1A45649700DE063A /* LabelCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		05B0E48F1A45679A00DE063A /* CellMakers */ = {
+			isa = PBXGroup;
+			children = (
+				05B0E4901A45679A00DE063A /* LabelCellMaker.h */,
+				05B0E4911A45679A00DE063A /* LabelCellMaker.m */,
+				05B0E4921A45679A00DE063A /* SpacingCellMaker.h */,
+				05B0E4931A45679A00DE063A /* SpacingCellMaker.m */,
+			);
+			path = CellMakers;
 			sourceTree = "<group>";
 		};
 		05F105551A447C0900092BEB /* Models */ = {
@@ -375,6 +393,7 @@
 				05451B4B1A0AA0DA004295AC /* DLSectionItem.m in Sources */,
 				05451B201A0AA090004295AC /* AppDelegate.m in Sources */,
 				055BCFFE1A2B4051000B0048 /* DLTableView+UITableViewDataSource.m in Sources */,
+				05B0E4951A45679A00DE063A /* SpacingCellMaker.m in Sources */,
 				05F1055E1A447C5100092BEB /* ToDoViewController.m in Sources */,
 				05B0E4781A4494AF00DE063A /* CheckBoxView.m in Sources */,
 				05451B4A1A0AA0DA004295AC /* DLCellItem.m in Sources */,
@@ -387,6 +406,7 @@
 				05B0E47F1A44D14600DE063A /* StartViewController.m in Sources */,
 				05F105581A447C2B00092BEB /* ToDoItem.m in Sources */,
 				05451B4C1A0AA0DA004295AC /* DLTableView.m in Sources */,
+				05B0E4941A45679A00DE063A /* LabelCellMaker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
